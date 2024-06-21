@@ -25,64 +25,42 @@ int main()
 
 
 //  inicio do jogo
-int i, j;
-std:: cout << "digite as coordenadas da linha: ";
-std:: cin >> i;
-std:: cout << "digite as coordenadas da coluna: ";
-std:: cin >> j;
+int i, j, jogador = 1, simbolo;
 
-// início da função jogo rodando
-bool jogoRodando;
+// início da função jogo rodando, vira false somente quando o jogador vence
+bool jogoRodando = true;
 do
 {
-    // início da função de teste de jogada valida
-    bool jogadaValida;
-    do
+    std:: cout << "digite as coordenadas da linha: ";
+    std:: cin >> i;
+    std:: cout << "digite as coordenadas da coluna: ";
+    std:: cin >> j;
+  
+   for (contadorLinha = 0; contadorLinha < 3; contadorLinha++)
     {
-        if ( i > 3 || j > 3)
+        for( contadorColuna = 0; contadorColuna < 3; contadorColuna++)
         {
-            jogadaValida = false;
-        }
-
-        // início da função que indica onde deve ficar o X
-        else
-        {
-            jogadaValida = true;
-            for (contadorLinha = 0; contadorLinha < 3; contadorLinha++)
+            if (contadorLinha + 1 == i && contadorColuna + 1 == j)
             {
-                for( contadorColuna = 0; contadorColuna < 3; contadorColuna++)
-                {
-                    if (contadorLinha == i - 1)
-                    {
-                        if (contadorColuna == j - 1)
-                        {
-                            matrizTaboleiro[contadorLinha][contadorColuna] = {'X'};
-                            std:: cout << matrizTaboleiro[contadorLinha][contadorColuna] << " ";
-                        }
-                        else
-                        {
-                            matrizTaboleiro[contadorLinha][contadorColuna] = {'-'};
-                            std:: cout << matrizTaboleiro[contadorLinha][contadorColuna] << " ";
-                        }
-                    }
-                    else
-                    {
-                        matrizTaboleiro[contadorLinha][contadorColuna] = {'-'};
-                        std:: cout << matrizTaboleiro[contadorLinha][contadorColuna] << " ";
-                    }
-                }
-                std:: cout << "\n";
+               matrizTaboleiro[contadorLinha][contadorColuna] = {'X'};
+               std:: cout << matrizTaboleiro[contadorLinha][contadorColuna] << " ";
             }
+            else
+            {
+                std:: cout << matrizTaboleiro[contadorLinha][contadorColuna] << " ";
+            }  
         }
-        // depois esse x pode ser substituido por simbolo pra quando tiver dois jogadores
-        if ( i == j && i == 'X')
-        {
-            jogoRodando = false;
-        }
+        std:: cout << "\n";
     }
-        while( jogadaValida == false);
+    
+    // condições para o jogador ganhar, diagonal principal
+    if (matrizTaboleiro[0][0] == 'X' &&  matrizTaboleiro[1][1] == 'X' && matrizTaboleiro[2][2] == 'X')
+    {
+        std:: cout << "Voce venceu";
+        jogoRodando = false;
+    }
 }
-    while( jogoRodando == true);
+while( jogoRodando == true);
 
 
 
