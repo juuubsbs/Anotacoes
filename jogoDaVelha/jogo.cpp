@@ -53,12 +53,23 @@ do
         std:: cout << "\n";
     }
     
-    // condições para o jogador ganhar, diagonal principal
-    if (matrizTaboleiro[0][0] == 'X' &&  matrizTaboleiro[1][1] == 'X' && matrizTaboleiro[2][2] == 'X')
+    // condições para o jogador ganhar:
+    // diagonal principal
+    if (matrizTaboleiro[0][0] == 'X' && matrizTaboleiro[1][1] == 'X' && matrizTaboleiro[2][2] == 'X')
     {
         std:: cout << "Voce venceu";
         jogoRodando = false;
     }
+    //diagonal secundária
+    else if (matrizTaboleiro[0][2] == 'X' && matrizTaboleiro[1][1] == 'X' && matrizTaboleiro[2][0] == 'X')
+    {
+        std:: cout << "Voce venceu";
+        jogoRodando = false;
+    }
+    //função pra ir somando as colunas e fixando as linhas
+    /* até agora nao pensei em como fazer as funções de linha e coluna, to pensando em ir somando com um for
+    porém ainda n parei pra pensar em como fazer, tá faltando um número de jogadas também e o segundo jogador 
+    ainda não foi feitoo*/
 }
 while( jogoRodando == true);
 
