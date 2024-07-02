@@ -13,10 +13,8 @@ int main()
 */ 
 
 //  função de criação da tabela.
-    for (contadorLinha = 0; contadorLinha < 3; contadorLinha++)
-    {
-        for( contadorColuna = 0; contadorColuna < 3; contadorColuna++)
-        {
+    for (contadorLinha = 0; contadorLinha < 3; contadorLinha++){
+        for( contadorColuna = 0; contadorColuna < 3; contadorColuna++){
             matrizTaboleiro[contadorLinha][contadorColuna] = {'-'};
             std:: cout << matrizTaboleiro[contadorLinha][contadorColuna] << " ";
         }
@@ -24,57 +22,75 @@ int main()
     }
 
 
-//  inicio do jogo
-int i, j, jogador = 1, simbolo;
+//inicio do jogo
+int i, j, jogadas = 0;
+char simbolo; 
+std:: string jogador; 
 
-// início da função jogo rodando, vira false somente quando o jogador vence
+//início da função jogo rodando, vira false somente quando o jogador vence
 bool jogoRodando = true;
-do
-{
-    std:: cout << "digite as coordenadas da linha: ";
+do{
+    //troca de jogadores
+    if ( jogadas % 2 == 0){
+        jogador = "jogador 1";
+        simbolo = 'X';
+    }
+    else{
+        jogador = "jogador 2"; 
+        simbolo = 'O';
+    }
+
+    std:: cout << "digite as coordenadas da linha " << jogador << ": ";
     std:: cin >> i;
-    std:: cout << "digite as coordenadas da coluna: ";
+    std:: cout << "digite as coordenadas da coluna " << jogador << ": ";
     std:: cin >> j;
+
+    jogadas++;
+
+    //ERROS 
   
-   for (contadorLinha = 0; contadorLinha < 3; contadorLinha++)
-    {
-        for( contadorColuna = 0; contadorColuna < 3; contadorColuna++)
-        {
-            if (contadorLinha + 1 == i && contadorColuna + 1 == j)
-            {
-               matrizTaboleiro[contadorLinha][contadorColuna] = {'X'};
+   for (contadorLinha = 0; contadorLinha < 3; contadorLinha++){
+        for( contadorColuna = 0; contadorColuna < 3; contadorColuna++){
+            if (contadorLinha + 1 == i && contadorColuna + 1 == j){
+               matrizTaboleiro[contadorLinha][contadorColuna] = {simbolo};
                std:: cout << matrizTaboleiro[contadorLinha][contadorColuna] << " ";
             }
-            else
-            {
+            else{
                 std:: cout << matrizTaboleiro[contadorLinha][contadorColuna] << " ";
             }  
         }
         std:: cout << "\n";
     }
-    
-    // condições para o jogador ganhar:
-    // diagonal principal
-    if (matrizTaboleiro[0][0] == 'X' && matrizTaboleiro[1][1] == 'X' && matrizTaboleiro[2][2] == 'X')
-    {
-        std:: cout << "Voce venceu";
+  
+
+    //CONDIÇÕES PARA GANHAR:
+    //diagonal principal
+    if ( matrizTaboleiro[0][0] == simbolo && matrizTaboleiro[1][1] == simbolo && matrizTaboleiro[2][2] == simbolo ){
         jogoRodando = false;
     }
     //diagonal secundária
-    else if (matrizTaboleiro[0][2] == 'X' && matrizTaboleiro[1][1] == 'X' && matrizTaboleiro[2][0] == 'X')
-    {
-        std:: cout << "Voce venceu";
-        jogoRodando = false;
+    else if ( matrizTaboleiro[0][2] == simbolo && matrizTaboleiro[1][1] == simbolo && matrizTaboleiro[2][0] == simbolo ){
+            jogoRodando = false;
     }
-    //função pra ir somando as colunas e fixando as linhas
-    /* até agora nao pensei em como fazer as funções de linha e coluna, to pensando em ir somando com um for
-    porém ainda n parei pra pensar em como fazer, tá faltando um número de jogadas também e o segundo jogador 
-    ainda não foi feitoo*/
+    //linhas iguais ou colunas iguais
+    for ( int linha = 0, coluna = 0; linha <= 3; linha ++, coluna++){
+            if ( matrizTaboleiro [linha][0] == simbolo && matrizTaboleiro [linha][1] == simbolo && matrizTaboleiro [linha][2] == simbolo ){
+                jogoRodando = false;
+            }
+            if ( matrizTaboleiro [0][coluna] == simbolo && matrizTaboleiro [1][coluna] == simbolo && matrizTaboleiro [2][coluna] == simbolo){
+                jogoRodando = false;  
+            }
+    }
 }
 while( jogoRodando == true);
 
+std:: cout << "Voce venceu, " << jogador << "!" << std::endl;
+std:: cout << "O numero total de jogadas foi: " << jogadas;
 
 
+/* não tem página inicial nem modos de jogo nem nada ainda, porém até agora ele funciona,
+não terminei a linha de erros, parei iniciando o teste de linha ou coluna maior que a matriz,
+talvez precise de mais um while.*/
 
 
 
