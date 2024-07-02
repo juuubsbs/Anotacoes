@@ -12,6 +12,7 @@ int main()
     precisa urgentemente começar a usar funções
 */ 
 
+
 //  função de criação da tabela.
     for (contadorLinha = 0; contadorLinha < 3; contadorLinha++){
         for( contadorColuna = 0; contadorColuna < 3; contadorColuna++){
@@ -40,14 +41,29 @@ do{
         simbolo = 'O';
     }
 
-    std:: cout << "digite as coordenadas da linha " << jogador << ": ";
-    std:: cin >> i;
-    std:: cout << "digite as coordenadas da coluna " << jogador << ": ";
-    std:: cin >> j;
+    //loop para erros de inserção
+    bool jogadaInvalida = true;
+    while ( jogadaInvalida == true){
+        std:: cout << "digite as coordenadas da linha " << jogador << ": ";
+        std:: cin >> i;
+        std:: cout << "digite as coordenadas da coluna " << jogador << ": ";
+        std:: cin >> j;
+
+        //ERROS:
+        //fora da matriz
+        if ( i > 3 || j > 3){
+            jogadaInvalida = true;
+        }
+        else jogadaInvalida = false;
+
+        //mensagem de erro
+        if (jogadaInvalida == true){
+            std:: cout << "Jogada Invalida! Tente novamente..." << std:: endl;
+        }
+    }
+    
 
     jogadas++;
-
-    //ERROS 
   
    for (contadorLinha = 0; contadorLinha < 3; contadorLinha++){
         for( contadorColuna = 0; contadorColuna < 3; contadorColuna++){
@@ -69,7 +85,7 @@ do{
         jogoRodando = false;
     }
     //diagonal secundária
-    else if ( matrizTaboleiro[0][2] == simbolo && matrizTaboleiro[1][1] == simbolo && matrizTaboleiro[2][0] == simbolo ){
+    if ( matrizTaboleiro[0][2] == simbolo && matrizTaboleiro[1][1] == simbolo && matrizTaboleiro[2][0] == simbolo ){
             jogoRodando = false;
     }
     //linhas iguais ou colunas iguais
@@ -90,7 +106,7 @@ std:: cout << "O numero total de jogadas foi: " << jogadas;
 
 /* não tem página inicial nem modos de jogo nem nada ainda, porém até agora ele funciona,
 não terminei a linha de erros, parei iniciando o teste de linha ou coluna maior que a matriz,
-talvez precise de mais um while.*/
+talvez precise de mais um while, tem q fazer pra não crachar com letras.*/
 
 
 
