@@ -26,7 +26,7 @@ int main()
 //inicio do jogo
 int i, j, jogadas = 0;
 char simbolo; 
-std:: string jogador; 
+std:: string jogador, iString, jString; 
 
 //início da função jogo rodando, vira false somente quando o jogador vence
 bool jogoRodando = true;
@@ -45,30 +45,36 @@ do{
     bool jogadaInvalida = true;
     while ( jogadaInvalida == true){
         std:: cout << "digite as coordenadas da linha " << jogador << ": ";
-        std:: cin >> i;
+        std:: cin >> iString;
         std:: cout << "digite as coordenadas da coluna " << jogador << ": ";
-        std:: cin >> j;
+        std:: cin >> jString;
+
+        i = iString[0] - 48 ;
+        j = jString [0] - 48 ;
 
         //ERROS:
         //fora da matriz
-        if ( i > 3 || j > 3){
+        if (iString.length() != 1 || jString.length() != 1){
+            jogadaInvalida = true;
+        }
+        else if ( i > 3 || j > 3 || i < 1 || j < 1){
             jogadaInvalida = true;
         }
         else jogadaInvalida = false;
 
         //mensagem de erro
         if (jogadaInvalida == true){
-            std:: cout << "Jogada Invalida! Tente novamente..." << std:: endl;
+            std:: cout << "    jogada invalida! Tente novamente..." << std:: endl;
         }
     }
     
-
+    //após verificação, adiciona como nova jogada e converte para número
     jogadas++;
   
    for (contadorLinha = 0; contadorLinha < 3; contadorLinha++){
         for( contadorColuna = 0; contadorColuna < 3; contadorColuna++){
             if (contadorLinha + 1 == i && contadorColuna + 1 == j){
-               matrizTaboleiro[contadorLinha][contadorColuna] = {simbolo};
+               matrizTaboleiro[contadorLinha][contadorColuna] = simbolo;
                std:: cout << matrizTaboleiro[contadorLinha][contadorColuna] << " ";
             }
             else{
