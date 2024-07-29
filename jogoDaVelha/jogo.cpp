@@ -33,20 +33,20 @@ bool jogoRodando = true;
 do{
     //troca de jogadores
     if ( jogadas % 2 == 0){
-        jogador = "jogador 1";
+        jogador = "\e[0;35mJogador 1\e[0m";
         simbolo = 'X';
     }
     else{
-        jogador = "jogador 2"; 
+        jogador = "\e[0;32mJogador 2\e[0m"; 
         simbolo = 'O';
     }
 
     //loop para erros de inserção
     bool jogadaInvalida = true;
     while ( jogadaInvalida == true){
-        std:: cout << "digite as coordenadas da linha " << jogador << ": ";
+        std:: cout << "digite as coordenadas da linha, " << jogador << ": ";
         std:: cin >> iString;
-        std:: cout << "digite as coordenadas da coluna " << jogador << ": ";
+        std:: cout << "digite as coordenadas da coluna, " << jogador << ": ";
         std:: cin >> jString;
 
         i = iString[0] - 48 ;
@@ -54,17 +54,25 @@ do{
 
         //ERROS:
         //fora da matriz
-        if (iString.length() != 1 || jString.length() != 1){
+        if (iString.size() != 1 || jString.size() != 1){
             jogadaInvalida = true;
         }
         else if ( i > 3 || j > 3 || i < 1 || j < 1){
             jogadaInvalida = true;
         }
+
+        //reinscrição 
+        else if ( matrizTaboleiro[i-1][j-1] == 'X' || matrizTaboleiro[i-1][j-1] == 'O'){
+            jogadaInvalida = true;
+            std:: cout << "Este espaco ja foi tomado!\n";
+        }
+
+        //sai do loop caso nenhum erro seja encontrado
         else jogadaInvalida = false;
 
         //mensagem de erro
         if (jogadaInvalida == true){
-            std:: cout << "    jogada invalida! Tente novamente..." << std:: endl;
+            std:: cout << "    \e[0;31mJogada Invalida! Tente Novamente...\e[0m" << std:: endl;
         }
     }
     
