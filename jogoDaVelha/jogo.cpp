@@ -1,19 +1,26 @@
 #include <iostream>
 #include <string>
+#include <locale.h>
+#include "menu.hpp"
 
 int main()
 {
-    char matrizTaboleiro[3][3]; 
-    int contadorLinha, contadorColuna;
 
 /*  ainda não tem tela inicial
     talvez colocar tempo?
-    lembrar de incluir dois jogadores, logo dois modos de jogo
     precisa urgentemente começar a usar funções
 */ 
 
+    // configurando a localização para aceitar acentos e demais caracteres especiais
+    std::setlocale(LC_ALL, "pt_BR.UTF-8");
 
-//  função de criação da tabela.
+    //menu
+
+
+
+    // função de criação da tabela.
+    char matrizTaboleiro[3][3]; 
+    int contadorLinha, contadorColuna;
     for (contadorLinha = 0; contadorLinha < 3; contadorLinha++){
         for( contadorColuna = 0; contadorColuna < 3; contadorColuna++){
             matrizTaboleiro[contadorLinha][contadorColuna] = {'-'};
@@ -23,12 +30,12 @@ int main()
     }
 
 
-//inicio do jogo
+//início do jogo
 int i, j, jogadas = 0;
 char simbolo; 
 std:: string jogador, iString, jString; 
 
-//início da função jogo rodando, vira false somente quando o jogador vence
+//início da função jogo rodando, vira 'false' somente quando o jogador vence
 bool jogoRodando = true;
 do{
     //troca de jogadores
@@ -44,9 +51,9 @@ do{
     //loop para erros de inserção
     bool jogadaInvalida = true;
     while ( jogadaInvalida == true){
-        std:: cout << "digite as coordenadas da linha, " << jogador << ": ";
+        std:: cout << "Digite a coordenada da linha, " << jogador << ": ";
         std:: cin >> iString;
-        std:: cout << "digite as coordenadas da coluna, " << jogador << ": ";
+        std:: cout << "Digite a coordenada da coluna, " << jogador << ": ";
         std:: cin >> jString;
 
         i = iString[0] - 48 ;
@@ -64,7 +71,7 @@ do{
         //reinscrição 
         else if ( matrizTaboleiro[i-1][j-1] == 'X' || matrizTaboleiro[i-1][j-1] == 'O'){
             jogadaInvalida = true;
-            std:: cout << "Este espaco ja foi tomado!\n";
+            std:: cout << "Este espaço já foi tomado!\n";
         }
 
         //sai do loop caso nenhum erro seja encontrado
@@ -72,11 +79,11 @@ do{
 
         //mensagem de erro
         if (jogadaInvalida == true){
-            std:: cout << "    \e[0;31mJogada Invalida! Tente Novamente...\e[0m" << std:: endl;
+            std:: cout << "    \e[0;31mJogada Inválida! Tente Novamente...\e[0m" << std:: endl;
         }
     }
     
-    //após verificação, adiciona como nova jogada e converte para número
+    //após verificação, adiciona uma nova jogada
     jogadas++;
   
    for (contadorLinha = 0; contadorLinha < 3; contadorLinha++){
@@ -111,16 +118,22 @@ do{
                 jogoRodando = false;  
             }
     }
+
+    //PARAR O JOGO
+    //velha (todas as casas ocupadas)
+    if (jogadas == 9 && jogoRodando == true){
+        std:: cout << "\e[0;33mVixe, deu velha, tente novamente :).\e[0m";
+        jogoRodando = false;
+    }
 }
 while( jogoRodando == true);
 
-std:: cout << "Voce venceu, " << jogador << "!" << std::endl;
-std:: cout << "O numero total de jogadas foi: " << jogadas;
+if ( jogadas < 9){
+    std:: cout << "Você venceu, " << jogador << "!" << std::endl;
+    std:: cout << "O número total de jogadas foi: " << jogadas;
+}
 
-
-/* não tem página inicial nem modos de jogo nem nada ainda, porém até agora ele funciona,
-não terminei a linha de erros, parei iniciando o teste de linha ou coluna maior que a matriz,
-talvez precise de mais um while, tem q fazer pra não crachar com letras.*/
+/* não tem página inicial nem modos de jogo nem nada ainda.*/
 
 
 
