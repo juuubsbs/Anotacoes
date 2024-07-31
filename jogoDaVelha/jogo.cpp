@@ -6,16 +6,14 @@
 int main()
 {
 
-/*  ainda não tem tela inicial
-    talvez colocar tempo?
-    precisa urgentemente começar a usar funções
-*/ 
+/*  talvez colocar tempo?
+    adicionar padding para centralizar*/ 
 
     // configurando a localização para aceitar acentos e demais caracteres especiais
     std::setlocale(LC_ALL, "pt_BR.UTF-8");
 
     //menu
-
+    menu();
 
 
     // função de criação da tabela.
@@ -132,8 +130,6 @@ if ( jogadas < 9){
     std:: cout << "Você venceu, " << jogador << "!" << std::endl;
     std:: cout << "O número total de jogadas foi: " << jogadas;
 }
-
-/* não tem página inicial nem modos de jogo nem nada ainda.*/
 
 
 
