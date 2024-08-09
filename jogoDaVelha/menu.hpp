@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 #include <locale.h>
-#include<cstdlib>
+#include <cstdlib>
 
 void comoJogar(){
 
@@ -39,9 +39,9 @@ void menu(){
 
         system("cls");
 
-        std:: cout << " .--------..-----..-----..--.--. \n";
-        std:: cout << " |        ||  -__||     ||  |  | \n";
-        std:: cout << " |__|__|__||_____||__|__||_____| \n\n\n";
+        std:: cout << " \n\n .--------..-----..-----..--.--. \n";
+             std:: cout << " |        ||  -__||     ||  |  | \n";
+             std:: cout << " |__|__|__||_____||__|__||_____| \n\n\n";
 
         std:: cout << "     1- Como Jogar?\n";
         std:: cout << "     2- Sobre as cores...\n";

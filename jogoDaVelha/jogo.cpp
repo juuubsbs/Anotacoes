@@ -9,6 +9,11 @@ int main()
 /*  talvez colocar tempo?
     adicionar padding para centralizar*/ 
 
+    // .-.   .-..----. .-.    .-. .-.   .--.
+    //  \ \_/ / } |__} } |    { {_} |  / {} \
+    //   \   /  } '__} } '--. | { } } /  /\  \
+    //    `-'   `----' `----' `-' `-' `-'  `-'
+
     // configurando a localização para aceitar acentos e demais caracteres especiais
     std::setlocale(LC_ALL, "pt_BR.UTF-8");
 
