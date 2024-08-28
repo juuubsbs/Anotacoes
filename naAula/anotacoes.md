@@ -9,3 +9,6 @@ Reduções:
 -=
 //tem mais no livro de c++ parte I (primeiros passos)
 
+constante:
+
+#define -> sempre nome em maiúsculo, como TAMANHO

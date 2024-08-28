@@ -1,5 +1,6 @@
 #include <iostream>
 
+
 int main(){
 
     std:: setlocale(LC_ALL, "pt_BR.UTF-8");
@@ -17,6 +18,9 @@ int main(){
         sumNota += nota;
 
     }
+
+
+    
 
     media = sumNota/numAlunos;
 
