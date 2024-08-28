@@ -1,7 +1,7 @@
 # Como criar `structs` ?
 ### Exemplo:
 ```cpp
-struct Pessoa {
+struct pessoa {
     std:: string nome,
     int idade,
     float altura,
@@ -14,4 +14,5 @@ Utilizamos ela como se fosse uma váriável com subtipos já definidos, uma mist
 std:: cout << "Digite o valor que deseja atribuir a idade: ";
 std:: cin >> pessoa.idade;
 ```
- 
+### Engraçadinho
+aqui tem hyperlink HAAHAHAHAHAHAHAHAH [trouxa](https://trends.google.com/trends/hottrends/visualize?nrow=3&ncol=3).
