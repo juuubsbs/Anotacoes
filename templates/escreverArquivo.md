@@ -19,3 +19,10 @@ Fechar o arquivo
 ````cpp
 arquivo.close();
 ````
+
+#### Verificar se o arquivo foi aberto corretamente
+````cpp
+nomedoarquivo.isopen();
+````	
+
+#### Ler o arquivo
