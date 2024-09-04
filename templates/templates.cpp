@@ -12,7 +12,6 @@ struct aluno{
 };
 
 int printDados (aluno alunos[5], int i){
-    arquivo.open ("arquivo.md");
 
     std:: cout << "Digite seu nome: ";
     std:: cin >> alunos[i].nome;
@@ -36,16 +35,18 @@ int printDados (aluno alunos[5], int i){
 };
 
 int main(){
+
+    arquivo.open ("arquivo.md");
     
-aluno alunos[5];
- for(int i = 0; i < 5; i++){
+    aluno alunos[5];
+    for(int i = 0; i < 5; i++){
 
-    std:: cout << "Digite seus dados aluno numero " << i+1 << ": \n";
-    printDados(alunos, i);
+        std:: cout << "Digite seus dados aluno numero " << i+1 << ": \n";
+        printDados(alunos, i);
 
- }
+    }
 
- arquivo.close();
+    arquivo.close();
 
 return 0;
 
