@@ -1,4 +1,4 @@
-#### Arquivos CSV
+### Arquivos CSV
 São arquivos os quai podem ser lidos por programas de tabelas, tal como excel, google sheets, etc. Eles são separados por vírgulas ou outro caractere especial de sua escolha para separar os dados.
 
 #### Regras
